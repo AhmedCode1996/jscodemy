@@ -1,0 +1,21 @@
+#!/bin/sh
+# Interactive commit message generator using prompts
+
+# Get the commit message file path
+COMMIT_MSG_FILE="$1"
+COMMIT_SOURCE="$2"
+
+# Skip in case of merge, rebase, etc.
+if [ -n "$COMMIT_SOURCE" ]; then
+  exit 0
+fi
+
+# Redirect terminal input for the interactive prompts
+exec < /dev/tty
+
+# Run Node.js script for the interactive UI
+# Fallback to original behavior if script fails
+node "./scripts/prepare-commit-msg.js" "$COMMIT_MSG_FILE" || true
+
+# Success
+exit 0
