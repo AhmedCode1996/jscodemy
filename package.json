@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "commitlint": "commitlint --edit",
+    "commit": "node scripts/commit.js"
   },
   "dependencies": {
     "next": "15.3.2",

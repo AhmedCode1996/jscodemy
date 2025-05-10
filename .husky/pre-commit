@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "\033[1;38;5;105m╔════════════════════════════════════════════════╗\033[0m"
+echo "\033[1;38;5;105m║                                                ║\033[0m"
+echo "\033[1;38;5;105m║        ✨ JSCODEMY LINT CHECKER ✨              ║\033[0m"
+echo "\033[1;38;5;105m║                                                ║\033[0m"
+echo "\033[1;38;5;105m╚════════════════════════════════════════════════╝\033[0m"
+echo ""
+echo "\033[1;38;5;39mChecking code quality before commit...\033[0m"
+echo "\033[1;38;5;245mRunning lint-staged to format and fix code\033[0m"
+echo ""
+
+# Run lint-staged
+LINT_STAGED_EXIT_CODE=0
+OUTPUT=$(npx lint-staged 2>&1) || LINT_STAGED_EXIT_CODE=$?
+
+if [ $LINT_STAGED_EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "\033[1;38;5;196m❌ Linting failed!\033[0m"
+  echo "\033[1;38;5;214m⚠️  Please fix the issues before committing:\033[0m"
+  echo ""
+  echo "$OUTPUT"
+  exit 1
+else
+  echo ""
+  echo "\033[1;38;5;82m✅ Code looks great!\033[0m"
+  echo "\033[1;38;5;226m🚀 Proceeding with commit...\033[0m"
+fi

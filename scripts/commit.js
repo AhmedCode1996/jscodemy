@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Queezy Interactive Commit CLI
+ * JSCODEMY Interactive Commit CLI
  * A stylish way to create conventional commits
  */
 
@@ -119,7 +119,9 @@ function getScopeSuggestion() {
 console.log("\n");
 console.log(styles.title("╔════════════════════════════════════════════════╗"));
 console.log(styles.title("║                                                ║"));
-console.log(styles.title("║          ✨ QUEEZY COMMIT WIZARD ✨           ║"));
+console.log(
+  styles.title("║          ✨ JSCODEMY COMMIT WIZARD ✨           ║"),
+);
 console.log(styles.title("║                                                ║"));
 console.log(styles.title("╚════════════════════════════════════════════════╝"));
 console.log("\n");
