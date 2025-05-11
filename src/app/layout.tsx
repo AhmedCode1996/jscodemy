@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
@@ -28,8 +29,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
-          {children}
+          <BackgroundGradient variant="gray">
+            <ModeToggle />
+            {children}
+          </BackgroundGradient>
         </ThemeProvider>
       </body>
     </html>
