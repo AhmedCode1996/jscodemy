@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import Header from "@/components/shared/header";
 
 import { fonts } from "@/config/fonts";
 
@@ -30,7 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <BackgroundGradient variant="gray">
-            <ModeToggle />
+            <Header />
             {children}
           </BackgroundGradient>
         </ThemeProvider>
