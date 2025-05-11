@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "commit": "node scripts/commit.js"
+    "commit": "node scripts/commit.js",
+    "push": "node scripts/push.js"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.14",
