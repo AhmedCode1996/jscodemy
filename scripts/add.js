@@ -76,7 +76,8 @@ function getChangedFiles() {
         }
 
         // Check if the file is already staged
-        const isStaged = status[0] !== " " && status[0] !== "?";
+        const isStaged =
+          status[0] === "M" ? false : status[0] !== " " && status[0] !== "?";
 
         return {
           status,

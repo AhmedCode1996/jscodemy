@@ -70,9 +70,7 @@ console.log(
 console.log(styles.title("║                                                ║"));
 console.log(styles.title("╚════════════════════════════════════════════════╝"));
 console.log("\n");
-console.log(
-  styles.subtitle("Push your commits to remote with interactive feedback"),
-);
+console.log(styles.subtitle("Push your commits to remote repo"));
 console.log(styles.muted("Follow the prompts to push your changes"));
 console.log("\n");
 
@@ -105,12 +103,6 @@ async function main() {
         name: "branch",
         message: "Branch to push to remote:",
         initial: currentBranch,
-      },
-      {
-        type: "confirm",
-        name: "forcePush",
-        message: "Use force push? (--force)",
-        initial: false,
       },
     ],
     {
@@ -160,7 +152,7 @@ async function main() {
   }
 
   // Build push command
-  const pushCommand = `git push ${response.forcePush ? "--force " : ""}${response.remote} ${currentBranch}:${response.branch}`;
+  const pushCommand = `git push ${response.remote} ${currentBranch}:${response.branch}`;
 
   // Show push command
   console.log(styles.highlight("\n🔄 Executing:"));
@@ -171,7 +163,7 @@ async function main() {
   const { confirmPush } = await prompts({
     type: "confirm",
     name: "confirmPush",
-    message: `Push ${currentBranch} to ${response.remote}/${response.branch}?${response.forcePush ? " (FORCE PUSH)" : ""}`,
+    message: `Push ${currentBranch} to ${response.remote}/${response.branch}?`,
     initial: true,
   });
 
@@ -185,12 +177,7 @@ async function main() {
 
   const pushProcess = spawn(
     "git",
-    [
-      "push",
-      ...(response.forcePush ? ["--force"] : []),
-      response.remote,
-      `${currentBranch}:${response.branch}`,
-    ],
+    ["push", response.remote, `${currentBranch}:${response.branch}`],
     { stdio: "pipe" },
   );
 
@@ -273,7 +260,6 @@ function formatGitOutput(output) {
   return formattedOutput;
 }
 
-// Execute main function
 main().catch((err) => {
   console.error(styles.error("❌ Error:"), err);
   process.exit(1);

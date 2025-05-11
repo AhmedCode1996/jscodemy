@@ -2,6 +2,7 @@
   "name": "jscodemy",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +10,7 @@
     "lint": "next lint",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
+    "stage": "node scripts/add.js",
     "commit": "node scripts/commit.js",
     "push": "node scripts/push.js"
   },
